@@ -24,6 +24,30 @@ player.storeMatchInformation = async (req, res, next) =>{
     }
 }
 
+player.getTopMatches = (req, res, next) => {
+    try{
+        let matchList = await playerMiddleWare.getTopMatches(req);
+        res.status(200).json({
+            PlayersStats: matchList
+        })
+    }catch(error){
+        res.status(500).json({
+            message: error
+        })
+    }
+}
 
+player.getMatchInfo = (req, res, next) => {
+    try{
+        let usersList = await playerMiddleWare.giveUserList(req.query);
+        res.status(200).json({
+            PlayersStats: usersList
+        })
+    }catch(error){
+        res.status(500).json({
+            message: error
+        })
+    }
+}
 
 module.exports = player;

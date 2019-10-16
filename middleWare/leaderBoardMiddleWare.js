@@ -27,7 +27,7 @@ leaderBoardMiddleWare.giveUserList = (req) => {
             }
             (async() => {
                 const client = await pool.connect();
-                let query = `select username, kills, score, match from users 
+                let query = `select username, kills, score, rank from users 
                     where match=${match} and timestatus ${timeValue} `;
                 const res = await client.query(query);
                 resolve(res.rows);
@@ -44,7 +44,7 @@ leaderBoardMiddleWare.giveUserList = (req) => {
 leaderBoardMiddleWare.getTopUsers = (req) => {
     return new Promise((resolve, reject) => {
         try{
-            const matchId = req.params.matchId;
+            const matchId = req.params.id;
             const match = req.query.match;
             (async() => {
                 const client = await pool.connect();
