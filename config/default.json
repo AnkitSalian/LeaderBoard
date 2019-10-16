@@ -1,0 +1,10 @@
+{
+    "dbConfig":{
+        "user": "postgres",
+        "host": "localhost",
+        "database": "ankitsalian",
+        "password": "ank1234",
+        "port": 5432,
+        "max": 20
+    }
+}
