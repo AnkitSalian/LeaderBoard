@@ -1,9 +1,27 @@
-//Imports
+const playerMiddleWare = require('../middleWare/playerMiddleWare');
 
 const player = {};
 
-player.storeMatchInformation = (req, res, next) =>{
-    
+player.storeMatchInformation = async (req, res, next) =>{
+    try{
+        const updateFlag = await playerMiddleWare.checkUserScore(req.body);
+        if(updateFlag){
+            const updateStatus = await playerMiddleWare.updateMatchInfo(req.body);
+            res.status(200).json({
+                message: 'Score updated',
+                username: req.body.username
+            })
+        }else{
+            const userInformation = await playerMiddleWare.storeMatchInfo(req.body);
+            res.status(200).json({
+                user: req.body
+            })
+        }
+    }catch(error){
+        res.status(500).json({
+            message: error
+        })
+    }
 }
 
 
