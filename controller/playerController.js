@@ -14,6 +14,7 @@ player.storeMatchInformation = async (req, res, next) =>{
         }else{
             const userInformation = await playerMiddleWare.storeMatchInfo(req.body);
             res.status(200).json({
+                message: 'Score success',
                 user: req.body
             })
         }
