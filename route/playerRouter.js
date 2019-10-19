@@ -15,7 +15,7 @@ playerRouter.use(helmet());
 playerRouter.use(hpp());
 
 playerRouter.post('/storeMatchInformation', playerController.storeMatchInformation);
-playerRouter.get(':id', playerController.getTopMatches);
+playerRouter.get('/:id', playerController.getTopMatches);
 playerRouter.get('/', playerController.getMatchInfo);
 
 module.exports = playerRouter;

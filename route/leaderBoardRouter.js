@@ -15,6 +15,6 @@ leaderBoardRouter.use(helmet());
 leaderBoardRouter.use(hpp());
 
 leaderBoardRouter.get('/',leaderBoard.getMatchInfo);
-leaderBoardRouter.get(':id', leaderBoard.getTopPlayersofMatches)
+leaderBoardRouter.get('/:id', leaderBoard.getTopPlayersofMatches)
 
 module.exports = leaderBoardRouter;

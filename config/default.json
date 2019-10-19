@@ -1,9 +1,9 @@
 {
     "dbConfig":{
         "user": "postgres",
-        "host": "localhost",
+        "host": "ankitsalian.cz6tphy95ywj.us-east-2.rds.amazonaws.com",
         "database": "ankitsalian",
-        "password": "ank1234",
+        "password": "ankit123456789",
         "port": 5432,
         "max": 20
     }
