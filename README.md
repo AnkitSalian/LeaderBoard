@@ -7,7 +7,7 @@ Commit Id: 1ef2e6d
 
 1) Storing the user or update the score:
 
-URL: http://localhost:3001/playersStats/storeMatchInformation
+URL: http://ankitsalian.ap-south-1.elasticbeanstalk.com/playersStats/storeMatchInformation
 POST call
 
 Request:
@@ -21,49 +21,44 @@ Request:
 Response:
   i) Stored Success:
           {
-                message: 'Score success',
-                user: {
-                    "username":"abc", 
-                    "kills": 2,
-                    "score": 300,
-                    "match":"pubg"
-                  }
-            }
+    "message": "Score success",
+    "user": {
+        "username": "abc",
+        "kills": 4,
+        "score": 500,
+        "match": "pubg"
+    }
+}
    ii) Score Updated:
         {
-                message: 'Score updated',
-                user: {
-                    "username":"abc", 
-                    "kills": 2,
-                    "score": 300,
-                    "match":"pubg"
-                  }
-            }
+    "message": "Score updated",
+    "username": "abc"
+}
             
 2) Fetch Top matches for a player
-URL: http://localhost:3001/playersStats/:id
+URL: http://ankitsalian.ap-south-1.elasticbeanstalk.com/playersStats/2
 GET Request
 
 Response:
  {
-    PlayersStats:[
-      {
-        "match":"pubg",
-        "kills": 2,
-        "score":300,
-        "rank":15
-      },
-      {
-        "match":"call of duty",
-        "kills": 8,
-        "score":800,
-        "rank":9
-      }
+    "PlayersStats": [
+        {
+            "kills": 4,
+            "score": 400,
+            "match": "pubg",
+            "rank": 2
+        },
+        {
+            "kills": 4,
+            "score": 400,
+            "match": "minesweeper",
+            "rank": 1
+        }
     ]
- }
+}
  
 3) Get match information:
-URL: http://localhost:3001/playersStats?match={matchname}&time={time}
+URL: http://ankitsalian.ap-south-1.elasticbeanstalk.com/playersStats?match=pubg&time=weekly
 GET Request
 
 Request:
@@ -71,22 +66,24 @@ time value can be any of 'last 1 hour,last 5 min,weekly,daily'
 
 Response:
 {
-  PlayersStats:[
-      {
-        "username":"abc",
-        "kills": 2,
-        "score":300
-      },
-      {
-        "username":"xyz",
-        "kills": 8,
-        "score":800
-      }
+    "PlayersStats": [
+        [
+            {
+                "username": "abc",
+                "kills": 2,
+                "score": 300
+            },
+            {
+                "username": "xyz",
+                "kills": 4,
+                "score": 300
+            }
+        ]
     ]
 }
 
 4)Get match information
-URL: http://localhost:3001/LeaderBoard?match={matchname}&time={time}
+URL: http://ankitsalian.ap-south-1.elasticbeanstalk.com/LeaderBoard?match=pubg&time=weekly
 GET Request
 
 Request:
@@ -94,40 +91,44 @@ time value can be any of 'last 1 hour,last 5 min,weekly,daily'
 
 Response:
 {
-  stats:[
-      {
-        "username":"abc",
-        "kills": 2,
-        "score":300,
-        "rank":15
-      },
-      {
-        "username":"xyz",
-        "kills": 8,
-        "score":800,
-        "rank":9
-      }
+    "stats": [
+        [
+            {
+                "username": "abc",
+                "kills": 2,
+                "score": 300,
+                "rank": 1
+            },
+            {
+                "username": "xyz",
+                "kills": 4,
+                "score": 300,
+                "rank": 2
+            }
+        ]
     ]
 }
 
 5)Get top players for matches
-URL: http://localhost:3001/LeaderBoard/:id?match={matchname}
+URL: http://ankitsalian.ap-south-1.elasticbeanstalk.com/LeaderBoard/2?match=minesweeper
 GET Request
 
 Response:
 {
-  stats:[
-    {
-        "username":"abc",
-        "kills": 2,
-        "score":300,
-        "rank":15
-      },
-      {
-        "username":"xyz",
-        "kills": 8,
-        "score":800,
-        "rank":9
-      }
-  ]
+    "stats": [
+        [
+            {
+                "username": "abc",
+                "kills": 4,
+                "score": 400,
+                "rank": 1
+            },
+            {
+                "username": "xyz",
+                "kills": 4,
+                "score": 400,
+                "rank": 2
+            }
+        ]
+    ]
 }

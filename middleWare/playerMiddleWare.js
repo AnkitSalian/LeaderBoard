@@ -1,4 +1,3 @@
-const pool = require('../databaseConnector/connect');
 const fs = require('fs');
 
 var playerMiddleWare = {};
